@@ -17,6 +17,12 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
+const middleware = (req, res, next) => {
+    console.log('hello from a middleware function')
+    next()
+}
+app.use(middleware)
+
 // Controllers
 app.use('/api-v1/users', require('./controllers/api-v1/userController'))
 

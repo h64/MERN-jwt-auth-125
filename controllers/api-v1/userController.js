@@ -2,6 +2,7 @@ const router = require('express').Router()
 const User = require('../../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const authLockedRoute = require('./authLockedRoute')
 
 // GET /users -- test endpoint
 router.get('/', async (req, res) => {
@@ -81,7 +82,7 @@ router.post('/login', async (req, res) => {
 })
 
 // GET /auth-locked -- redirect if a bad token is found
-router.get('/auth-locked', async (req, res) => {
+router.get('/auth-locked', authLockedRoute, async (req, res) => {
     res.json({ msg: 'welcome to the private route' })
 })
 
