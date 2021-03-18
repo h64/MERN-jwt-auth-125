@@ -17,6 +17,9 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
+// Controllers
+app.use('/api-v1/users', require('./controllers/api-v1/userController'))
+
 // Routes
 app.get('/', (req, res) => {
     res.json({ msg: 'hello world! 🤖' })
